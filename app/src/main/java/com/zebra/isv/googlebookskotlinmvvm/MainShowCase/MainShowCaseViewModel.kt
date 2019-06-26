@@ -15,7 +15,9 @@ class MainShowCaseViewModel(
 
     //Dont know how to use lazy coroutines. Hope this works.
     //Dont use GlobalScope as much
-    val Books = GlobalScope.async { googleBooksRepository.fetBooks(query) }
+   val Books by lazyDeferred{
+        googleBooksRepository.fetBooks(query)
+    }
 
 
 

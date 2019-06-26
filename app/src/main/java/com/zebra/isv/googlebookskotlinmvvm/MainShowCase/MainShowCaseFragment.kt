@@ -7,13 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.zebra.isv.googlebookskotlinmvvm.R
+import com.zebra.isv.googlebookskotlinmvvm.base.ScopedFragment
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.internal.Internal.instance
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 
 
-class MainShowCaseFragment : Fragment() {
+class MainShowCaseFragment : ScopedFragment(),KodeinAware {
 
-    companion object {
-        fun newInstance() = MainShowCaseFragment()
-    }
+    override val kodein by closestKodein()
+
+    private val viewModelFactory:MainShowCaseViewModelFactory by instance()
+
 
     private lateinit var viewModel: MainShowCaseViewModel
 
@@ -26,8 +34,16 @@ class MainShowCaseFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainShowCaseViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProviders.of(this,viewModelFactory)
+            .get(MainShowCaseViewModel::class.java)
+        bindUI()
+
+    }
+
+    private fun bindUI() = launch{
+        val currentBooks = viewModel.Books.await()
+        currentBooks
+
     }
 
 }
