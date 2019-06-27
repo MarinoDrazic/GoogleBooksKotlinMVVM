@@ -1,6 +1,7 @@
 package com.zebra.isv.googlebookskotlinmvvm.MainShowCase
 
 import androidx.lifecycle.ViewModel;
+import com.zebra.isv.googlebookskotlinmvvm.data.Response.GoogleBooksResponse
 import com.zebra.isv.googlebookskotlinmvvm.data.internal.lazyDeferred
 import com.zebra.isv.googlebookskotlinmvvm.data.reposotory.GoogleBooksRepository
 
