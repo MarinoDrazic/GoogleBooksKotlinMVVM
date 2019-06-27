@@ -11,9 +11,12 @@ class GoogleBooksRepositoryImp(private val googleBooksDataSource: GoogleBooksDat
 
 
 
-    override suspend fun fetBooks(query: String):LiveData<GoogleBooksResponse> {
+    override suspend fun fetchBooks(query: String):LiveData<GoogleBooksResponse> {
         googleBooksDataSource.fetchBooks(query)
-        //Stavljeno samo da ne vraca error
+
+
+        //Stavljeno samo da ne vraca error ne
+        //nevirujen da je pravilni nacin dohvacanja podataka.
         return googleBooksDataSource.downloadedGoogleBooks
 
     }

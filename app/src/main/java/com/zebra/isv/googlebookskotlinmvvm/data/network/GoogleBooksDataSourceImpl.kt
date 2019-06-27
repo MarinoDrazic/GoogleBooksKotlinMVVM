@@ -19,5 +19,7 @@ class GoogleBooksDataSourceImpl(
             .getBooks(query).await()
         _downloadedGoogleBooks.postValue(fetchedBooks)
 
+        //sta ako stavin da ova metoda vraca livedata?
+
     }
 }

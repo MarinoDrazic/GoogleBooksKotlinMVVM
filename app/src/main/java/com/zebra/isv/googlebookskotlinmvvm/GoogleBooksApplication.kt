@@ -16,6 +16,11 @@ import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
 class GoogleBooksApplication:Application(),KodeinAware {
+
+    override fun onCreate() {
+        super.onCreate()
+    }
+
     override val kodein= Kodein.lazy {
         import(androidModule(this@GoogleBooksApplication))
 
