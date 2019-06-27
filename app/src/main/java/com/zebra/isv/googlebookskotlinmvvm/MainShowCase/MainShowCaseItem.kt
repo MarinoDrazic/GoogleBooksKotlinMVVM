@@ -16,7 +16,7 @@ class MainShowCaseItem(val itemBooks :com.zebra.isv.googlebookskotlinmvvm.data.R
                 .load(itemBooks.volumeInfo.imageLinks.thumbnail)
                 .into(imageView)
             textViewTitle.text = itemBooks.volumeInfo.title
-            textViewAuthor.text = itemBooks.volumeInfo.authors?.toString() ?: "2"
+            textViewAuthor.text = itemBooks.volumeInfo.authors?.toString() ?: "No author provided"
             textViewDescription.text = itemBooks.volumeInfo.description ?: "No Description provided."
         }
     }
