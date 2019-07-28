@@ -4,19 +4,8 @@ import androidx.lifecycle.LiveData
 import com.zebra.isv.googlebookskotlinmvvm.data.Response.GoogleBooksResponse
 import com.zebra.isv.googlebookskotlinmvvm.data.network.GoogleBooksDataSource
 
-class GoogleBooksRepositoryImp(private val googleBooksDataSource: GoogleBooksDataSource):GoogleBooksRepository {
+class GoogleBooksRepositoryImp(private val googleBooksDataSource: GoogleBooksDataSource) : GoogleBooksRepository {
 
-
-
-    override suspend fun fetchBooks(query: String):LiveData<GoogleBooksResponse> {
+    override suspend fun fetchBooks(query: String): GoogleBooksResponse =
         googleBooksDataSource.fetchBooks(query)
-
-
-        //Stavljeno samo da ne vraca error ne
-        //nevirujen da je pravilni nacin dohvacanja podataka.
-        return googleBooksDataSource.downloadedGoogleBooks
-
-    }
-
-
 }

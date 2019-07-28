@@ -12,12 +12,13 @@ class MainShowCaseItem(val itemBooks :com.zebra.isv.googlebookskotlinmvvm.data.R
         viewHolder.apply {
             //add Experimental
 
-            Glide.with(this.containerView)
-                .load(itemBooks.volumeInfo.imageLinks.thumbnail)
-                .into(imageView)
+            if (itemBooks.volumeInfo.imageLinks.thumbnail!=null) {
+                Glide.with(this.containerView)
+                    .load(itemBooks.volumeInfo.imageLinks.thumbnail)
+                    .into(imageView)
+            }
             textViewTitle.text = itemBooks.volumeInfo.title
-            textViewAuthor.text = itemBooks.volumeInfo.authors?.toString() ?: "No author provided"
-            textViewDescription.text = itemBooks.volumeInfo.description ?: "No Description provided."
+            textViewAuthor.text = itemBooks.saleInfo.saleability
         }
     }
 
