@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/navigation_main">
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_main" app:startDestination="@id/mainShowCaseFragment">
 
+    <fragment android:id="@+id/mainShowCaseFragment"
+              android:name="com.zebra.isv.googlebookskotlinmvvm.MainShowCase.MainShowCaseFragment"
+              android:label="MainShowCaseFragment"/>
+    <fragment android:id="@+id/profileFragment"
+              android:name="com.zebra.isv.googlebookskotlinmvvm.profile.ProfileFragment"
+              android:label="profile_fragment" tools:layout="@layout/profile_fragment"/>
+    <fragment android:id="@+id/searchFragment" android:name="com.zebra.isv.googlebookskotlinmvvm.search.SearchFragment"
+              android:label="search_fragment" tools:layout="@layout/search_fragment"/>
 </navigation>

@@ -25,12 +25,19 @@ class MainShowCaseViewModel(
 
 
     fun fetchMatchData(query: String) = launch {
-        _actionData.postValue(googleBooksRepository.fetchBooks("action"))
-        _mystery.postValue(googleBooksRepository.fetchBooks("mystery"))
-        _advanture.postValue(googleBooksRepository.fetchBooks("adventure"))
-        _drama.postValue(googleBooksRepository.fetchBooks("drama"))
+        launch {
+            _actionData.postValue(googleBooksRepository.fetchBooks("action"))
+        }
+        launch {
+            _mystery.postValue(googleBooksRepository.fetchBooks("mystery"))
+        }
+        launch {
+            _advanture.postValue(googleBooksRepository.fetchBooks("adventure"))
+        }
+        launch {
+            _drama.postValue(googleBooksRepository.fetchBooks("drama"))
+        }
     }
-
 
 
 }

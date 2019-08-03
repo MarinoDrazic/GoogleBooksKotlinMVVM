@@ -7,6 +7,7 @@ import com.zebra.isv.googlebookskotlinmvvm.data.network.GoogleBooksDataSource
 import com.zebra.isv.googlebookskotlinmvvm.data.network.GoogleBooksDataSourceImpl
 import com.zebra.isv.googlebookskotlinmvvm.data.reposotory.GoogleBooksRepository
 import com.zebra.isv.googlebookskotlinmvvm.data.reposotory.GoogleBooksRepositoryImp
+import com.zebra.isv.googlebookskotlinmvvm.profile.ProfileViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.androidModule
@@ -29,6 +30,7 @@ class GoogleBooksApplication:Application(),KodeinAware {
         bind<GoogleBooksDataSource>() with singleton { GoogleBooksDataSourceImpl(instance()) }
         bind<GoogleBooksRepository>() with singleton { GoogleBooksRepositoryImp(instance())}
         bind() from provider{ MainShowCaseViewModelFactory(instance()) }
+        bind() from provider { ProfileViewModelFactory(instance()) }
 
 
     }

@@ -24,10 +24,17 @@
 
     <fragment
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.zebra.isv.googlebookskotlinmvvm.MainShowCase.MainShowCaseFragment"
-            android:id="@+id/fragment"
+            android:layout_height="match_parent"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:id="@+id/nav_host_fragment"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintStart_toStartOf="@id/bottom_nav"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"/>
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+            app:navGraph="@navigation/navigation_main"/>
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/fragment_container"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav">
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
