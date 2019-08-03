@@ -7,7 +7,7 @@
         android:layout_width="132dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:minHeight="?listPreferredItemHeightLarge" app:cardCornerRadius="20dp" app:cardElevation="5dp"
+        android:minHeight="?listPreferredItemHeightLarge" app:cardCornerRadius="20dp" app:cardElevation="4dp"
         app:cardPreventCornerOverlap="true" app:cardUseCompatPadding="false">
 
     <ImageView

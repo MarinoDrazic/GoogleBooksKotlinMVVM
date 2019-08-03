@@ -1,22 +1,19 @@
 package com.zebra.isv.googlebookskotlinmvvm.profile
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import com.zebra.isv.googlebookskotlinmvvm.MainShowCase.MainShowCaseItem
-
 import com.zebra.isv.googlebookskotlinmvvm.R
 import com.zebra.isv.googlebookskotlinmvvm.base.ScopedFragment
 import com.zebra.isv.googlebookskotlinmvvm.data.Response.GoogleBooksResponse
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.coroutines.launch
-import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
@@ -41,7 +38,6 @@ class ProfileFragment : ScopedFragment(), KodeinAware {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(ProfileViewModel::class.java)
         viewModel.fetchMatchData("Kanye")
-        // TODO: Use the ViewModel
         bindUI()
     }
 

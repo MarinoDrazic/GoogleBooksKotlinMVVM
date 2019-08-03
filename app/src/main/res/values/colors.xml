@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="transparent">#00000000</color>
     <color name="bottom_navigation_indicator_color">#0D80B6</color>
+    <color name="searchblue">#364D9E</color>
 
 
 </resources>
