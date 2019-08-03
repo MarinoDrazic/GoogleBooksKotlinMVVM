@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.xwray.groupie.GroupAdapter
@@ -53,20 +54,16 @@ class MainShowCaseFragment : ScopedFragment(), KodeinAware {
         })
         viewModel.advanture.observe(this@MainShowCaseFragment, Observer {
             it?.let { listOfBooks ->
-                GroupLoadingAdvanture.visibility = View.GONE
-
                 initRecycler(listOfBooks.toMainShowCaseItems(), "adventure")
             }
         })
         viewModel.drama.observe(this@MainShowCaseFragment, Observer {
             it?.let { listOfBooks ->
-                GroupLoadingAdvanture.visibility = View.GONE
                 initRecycler(listOfBooks.toMainShowCaseItems(), "drama")
             }
         })
         viewModel.mystery.observe(this@MainShowCaseFragment, Observer {
             it?.let { listOfBooks ->
-                GroupLoadingAdvanture.visibility = View.GONE
                 initRecycler(listOfBooks.toMainShowCaseItems(), "mystery")
             }
         })
@@ -86,29 +83,31 @@ class MainShowCaseFragment : ScopedFragment(), KodeinAware {
 
         when (selector) {
             "adventure" -> {
-                imageViewAdvanture.visibility = View.VISIBLE
-                GroupLoadingAdvanture.visibility = View.GONE
+                //For some reason setting group visibility doesn't work. Manual it is.
+                progressBarAdvanture.visibility = View.GONE
+                textViewLoadingAdventure.visibility = View.GONE
                 recyclerViewAdvanture.apply {
                     adapter = groupAdapter
                 }
             }
             "action" -> {
-                imageViewAction.visibility = View.VISIBLE
+                progressBarAction.visibility = View.GONE
+                textViewLoadingAction.visibility = View.GONE
                 GroupLoadingAction.visibility = View.GONE
                 recyclerViewAction.apply {
                     adapter = groupAdapter
                 }
             }
             "drama" -> {
-                imageViewDrama.visibility = View.VISIBLE
-                GroupLoadingDrama.visibility = View.GONE
+                progressBarDrama.visibility = View.GONE
+                textViewLoadingDrama.visibility = View.GONE
                 recyclerViewDrama.apply {
                     adapter = groupAdapter
                 }
             }
             "mystery" -> {
-                imageViewMystery.visibility = View.VISIBLE
-                GroupLoadingMystery.visibility = View.GONE
+                progressBarMystery.visibility = View.GONE
+                textViewLoadingMystery.visibility = View.GONE
                 recyclerViewMystery.apply {
                     adapter = groupAdapter
                 }

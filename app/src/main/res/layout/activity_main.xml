@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -6,10 +5,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        >
+>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="60dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:labelVisibilityMode="labeled"
+            android:id="@+id/bottom_nav"
+            app:menu="@menu/bottom_navigation"
+            app:layout_constraintStart_toStartOf="parent" app:itemHorizontalTranslationEnabled="true"
+            app:itemBackground="@drawable/bottom_nav_selector_background" android:elevation="5dp"
+            android:backgroundTint="@android:color/white"
+            android:foregroundTint="@color/colorAccent" android:backgroundTintMode="src_over"
+            android:foregroundTintMode="src_over" app:itemIconTint="@color/bottom_navigation_indicator_color"
+            app:itemTextColor="@color/bottom_navigation_indicator_color" android:textAlignment="gravity"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+            android:layout_gravity="bottom"
+            android:textDirection="locale" android:background="@android:color/white"/>
+
     <fragment
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:name="com.zebra.isv.googlebookskotlinmvvm.MainShowCase.MainShowCaseFragment"
-            android:id="@+id/fragment"/>
+            android:id="@+id/fragment"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintStart_toStartOf="@id/bottom_nav"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
