@@ -11,4 +11,13 @@
               android:label="profile_fragment" tools:layout="@layout/profile_fragment"/>
     <fragment android:id="@+id/searchFragment" android:name="com.zebra.isv.googlebookskotlinmvvm.search.SearchFragment"
               android:label="search_fragment" tools:layout="@layout/search_fragment"/>
+    <fragment android:id="@+id/bookShowcase2"
+              android:name="com.zebra.isv.googlebookskotlinmvvm.bookShowcase.BookShowcase"
+              android:label="book_showcase_fragment" tools:layout="@layout/book_showcase_fragment">
+        <argument android:name="book" app:argType="com.zebra.isv.googlebookskotlinmvvm.data.internal.ShowcaseItem"/>
+    </fragment>
+    <action android:id="@+id/toBookShowCase" app:destination="@id/bookShowcase2"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true" app:launchSingleTop="true" app:popUpTo="@+id/mainShowCaseFragment"/>
 </navigation>
