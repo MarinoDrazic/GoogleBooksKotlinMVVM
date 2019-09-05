@@ -2,6 +2,7 @@ package com.zebra.isv.googlebookskotlinmvvm.search
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,15 +47,15 @@ class SearchFragment : ScopedFragment(), KodeinAware {
     private fun bindUI() = launch {
 
         viewModel.searchedData.observe(this@SearchFragment, Observer {
-            it?.let { listOfBooks ->
-                val groupAdapter = GroupAdapter<ViewHolder>().apply {
-                    addAll(listOfBooks.toSearchCaseItem())
-                }
-                recyclerViewSearch.adapter = groupAdapter
-                lottieAnimationView.pauseAnimation()
-                lottieAnimationView.visibility = View.GONE
-                textViewEmptySearch.visibility = View.GONE
-            }
+            lottieAnimationView.pauseAnimation()
+            lottieAnimationView.visibility = View.GONE
+            textViewEmptySearch.visibility = View.GONE
+            lottieSearchDone.visibility = View.VISIBLE
+            lottieSearchDone.playAnimation()
+            Handler().postDelayed({
+                bindBooks(it)
+            }, 1500)
+
         })
         editText.setOnEditorActionListener { v, actionId, event ->
             if (actionId and EditorInfo.IME_MASK_ACTION != 0) {
@@ -67,7 +68,16 @@ class SearchFragment : ScopedFragment(), KodeinAware {
             }
         }
     }
-
+    fun bindBooks(it:GoogleBooksResponse)= launch {
+        it?.let { listOfBooks ->
+            val groupAdapter = GroupAdapter<ViewHolder>().apply {
+                addAll(listOfBooks.toSearchCaseItem())
+            }
+            recyclerViewSearch.adapter = groupAdapter
+        }
+        lottieSearchDone.pauseAnimation()
+        lottieSearchDone.visibility = View.GONE
+    }
     fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
