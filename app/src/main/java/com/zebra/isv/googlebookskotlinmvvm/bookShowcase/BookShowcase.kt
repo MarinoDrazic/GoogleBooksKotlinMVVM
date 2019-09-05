@@ -1,17 +1,18 @@
 package com.zebra.isv.googlebookskotlinmvvm.bookShowcase
 
-import androidx.lifecycle.ViewModelProviders
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
-
-import com.zebra.isv.googlebookskotlinmvvm.R
 import com.zebra.isv.googlebookskotlinmvvm.data.internal.ShowcaseItem
 import kotlinx.android.synthetic.main.book_showcase_fragment.*
-import kotlinx.android.synthetic.main.item_recyclerview.*
+import kotlinx.coroutines.launch
+
 
 class BookShowcase : Fragment() {
 
@@ -25,7 +26,7 @@ class BookShowcase : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.book_showcase_fragment, container, false)
+        return inflater.inflate(com.zebra.isv.googlebookskotlinmvvm.R.layout.book_showcase_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -40,9 +41,20 @@ class BookShowcase : Fragment() {
                 playAnimation()
             }
         }
+        lottiedownload.setOnClickListener {
+            lottiedownload.apply {
+                pauseAnimation()
+                playAnimation()
+            }
+            launchBrowser(showcaseItem)
+        }
     }
-
-    fun bindUI(showcaseItem: ShowcaseItem) {
+    private fun launchBrowser(showcaseItem: ShowcaseItem) = launch{
+        Thread.sleep(4000)
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(showcaseItem.webReaderLink))
+        startActivity(browserIntent)
+    }
+    private fun bindUI(showcaseItem: ShowcaseItem) {
         Glide.with(this)
             .load(showcaseItem.image)
             .into(imageViewBookShowcase)
@@ -55,6 +67,9 @@ class BookShowcase : Fragment() {
             textViewDescriptionShowcase.text = showcaseItem.description
         } else
             textViewDescriptionShowcase.text = "No description Provided"
+        if(showcaseItem.webReaderLink == null){
+            lottiedownload.visibility=View.GONE
+        }
     }
 
 }

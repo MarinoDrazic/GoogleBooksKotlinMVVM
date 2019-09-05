@@ -28,7 +28,8 @@ class MainShowCaseItem(val itemBooks: com.zebra.isv.googlebookskotlinmvvm.data.R
                         itemBooks.volumeInfo.title,
                         itemBooks.volumeInfo.authors.toString(),
                         itemBooks.volumeInfo.imageLinks.thumbnail,
-                        itemBooks.volumeInfo.description.toString()
+                        itemBooks.volumeInfo.description.toString(),
+                        itemBooks.accessInfo.webReaderLink ?:"empty"
                     )
                 )
                 Navigation.findNavController(viewHolder.containerView).navigate(R.id.toBookShowCase, bundle)
