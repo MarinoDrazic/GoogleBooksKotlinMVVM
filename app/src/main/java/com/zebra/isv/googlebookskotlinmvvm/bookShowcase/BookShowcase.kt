@@ -34,6 +34,12 @@ class BookShowcase : Fragment() {
         // TODO: Use the ViewModel
         val showcaseItem = arguments?.getParcelable("book") as ShowcaseItem
         bindUI(showcaseItem)
+        lottiecheck.setOnClickListener {
+            lottiecheck.apply {
+                pauseAnimation()
+                playAnimation()
+            }
+        }
     }
 
     fun bindUI(showcaseItem: ShowcaseItem) {

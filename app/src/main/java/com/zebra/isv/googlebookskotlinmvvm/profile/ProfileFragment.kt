@@ -39,6 +39,12 @@ class ProfileFragment : ScopedFragment(), KodeinAware {
             .get(ProfileViewModel::class.java)
         viewModel.fetchMatchData("Kanye")
         bindUI()
+        lottieheart.setOnClickListener {
+            lottieheart.apply {
+                pauseAnimation()
+                playAnimation()
+            }
+        }
     }
 
     private fun bindUI() = launch {

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "83690497397",
+    "firebase_url": "https://bootlegdiscord.firebaseio.com",
+    "project_id": "bootlegdiscord",
+    "storage_bucket": "bootlegdiscord.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83690497397:android:e5f65139a6c0c080",
+        "android_client_info": {
+          "package_name": "com.zebra.isv.bootlegdiscord"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83690497397-j6le7e9urthpgk57e3jqlo0sgog4cffi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD11ZSxrbd1ajww_V_UacrvbEpx2WSmufs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83690497397-j6le7e9urthpgk57e3jqlo0sgog4cffi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

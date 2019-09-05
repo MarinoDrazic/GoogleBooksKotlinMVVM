@@ -38,6 +38,7 @@ class SearchFragment : ScopedFragment(), KodeinAware {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(SearchViewModel::class.java)
         bindUI()
+        lottieAnimationView.playAnimation()
     }
 
     private fun bindUI() = launch {
@@ -48,7 +49,8 @@ class SearchFragment : ScopedFragment(), KodeinAware {
                     addAll(listOfBooks.toSearchCaseItem())
                 }
                 recyclerViewSearch.adapter = groupAdapter
-                imageViewEmptySearch.visibility = View.GONE
+                lottieAnimationView.pauseAnimation()
+                lottieAnimationView.visibility = View.GONE
                 textViewEmptySearch.visibility = View.GONE
             }
         })

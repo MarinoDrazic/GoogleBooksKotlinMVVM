@@ -30,6 +30,14 @@
             android:id="@+id/imageViewBookShowcase" android:scaleType="centerCrop" android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5" android:layout_marginStart="50dp"
             app:layout_constraintStart_toStartOf="@+id/imageView4"/>
+    <com.airbnb.lottie.LottieAnimationView android:layout_width="100dp" android:layout_height="100dp"
+                                           app:layout_constraintEnd_toEndOf="@+id/imageViewBuyShowcase"
+                                           app:layout_constraintStart_toStartOf="@+id/imageViewBuyShowcase"
+                                           app:layout_constraintBottom_toBottomOf="@+id/imageViewBuyShowcase"
+                                           app:layout_constraintTop_toTopOf="@+id/imageViewBuyShowcase"
+                                           app:lottie_autoPlay="false"
+                                           app:lottie_fileName="782-check-mark-success.json"
+                                           app:lottie_loop="false" android:id="@+id/lottiecheck"/>
     <TextView
             android:text="TextView"
             android:layout_width="250dp"
