@@ -20,6 +20,7 @@
                 android:layout_height="match_parent"
                 android:inputType="textPersonName"
                 android:ems="10"
+                android:imeOptions="actionDone"
                 android:id="@+id/editText" android:hint="Search..."/>
     </androidx.cardview.widget.CardView>
     <androidx.recyclerview.widget.RecyclerView

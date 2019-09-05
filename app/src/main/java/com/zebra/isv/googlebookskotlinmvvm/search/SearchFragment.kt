@@ -1,10 +1,12 @@
 package com.zebra.isv.googlebookskotlinmvvm.search
 
+import android.content.Context
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.xwray.groupie.GroupAdapter
@@ -54,17 +56,22 @@ class SearchFragment : ScopedFragment(), KodeinAware {
                 textViewEmptySearch.visibility = View.GONE
             }
         })
-        editText.setOnKeyListener(object : View.OnKeyListener {
-            override fun onKey(view: View, keyCode: Int, keyevent: KeyEvent): Boolean {
-                return if (keyevent.getAction() === KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    viewModel.fetchMatchData(editText.text.toString())
-                    editText.clearAnimation()
-                    true
-                } else false
+        editText.setOnEditorActionListener { v, actionId, event ->
+            if (actionId and EditorInfo.IME_MASK_ACTION != 0) {
+                viewModel.fetchMatchData(editText.text.toString())
+                editText.clearAnimation()
+                editText.hideKeyboard()
+                true
+            } else {
+                false
             }
-        })
+        }
     }
 
+    fun View.hideKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
 
     //TODO move this into a useCase
     private fun GoogleBooksResponse.toSearchCaseItem(): List<SearchCaseItem> {
