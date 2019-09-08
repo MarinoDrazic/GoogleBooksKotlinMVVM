@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
     <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".bookShowcase.BookShowcase" android:background="@android:color/white">
-        <ImageView
-                android:src="@drawable/splash2"
-                android:layout_width="match_parent"
-                android:layout_height="350dp" android:id="@+id/imageView4" android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
-        <ImageView
-                android:src="@drawable/topbar"
-                android:layout_width="wrap_content"
-                android:layout_height="65dp" android:id="@+id/imageView5"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4" android:scaleType="fitXY"/>
+
         <ImageView
                 android:src="@drawable/buy_icon"
                 android:layout_width="50dp"
                 android:layout_height="50dp" android:id="@+id/imageViewBuyShowcase"
-                app:layout_constraintEnd_toEndOf="@+id/imageView5" android:layout_marginEnd="65dp"
-                android:layout_marginBottom="48dp" app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        />
+                app:layout_constraintBottom_toBottomOf="@+id/toparcView"
+                android:layout_marginBottom="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp" android:elevation="11dp"/>
+        <com.github.florent37.shapeofview.shapes.ArcView
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:elevation="10dip"
+                app:shape_arc_position="bottom"
+                app:shape_arc_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/toparcView">
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/splash2"/>
+
+        </com.github.florent37.shapeofview.shapes.ArcView>
         <ImageView
                 android:layout_width="100dp"
                 android:layout_height="150dp" tools:src="@tools:sample/backgrounds/scenic"
                 android:id="@+id/imageViewBookShowcase" android:scaleType="centerCrop"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView5" android:layout_marginStart="50dp"
-                app:layout_constraintStart_toStartOf="@+id/imageView4"/>
+                android:layout_marginStart="50dp"
+                app:layout_constraintStart_toStartOf="@+id/toparcView" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/toparcView" android:elevation="11dp"/>
         <com.airbnb.lottie.LottieAnimationView android:layout_width="100dp" android:layout_height="100dp"
                                                app:layout_constraintEnd_toEndOf="@+id/imageViewBuyShowcase"
                                                app:layout_constraintStart_toStartOf="@+id/imageViewBuyShowcase"
@@ -43,14 +48,16 @@
                                                app:layout_constraintTop_toTopOf="@+id/imageViewBuyShowcase"
                                                app:lottie_autoPlay="false"
                                                app:lottie_fileName="782-check-mark-success.json"
-                                               app:lottie_loop="false" android:id="@+id/lottiecheck"/>
+                                               app:lottie_loop="false" android:id="@+id/lottiecheck"
+                                               android:elevation="11dp"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewTitleShowcase" android:layout_marginTop="32dp"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="50dp" android:textSize="30sp" android:textStyle="bold"/>
+                android:id="@+id/textViewTitleShowcase"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="50dp" android:textSize="30sp" android:textStyle="bold"
+                android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/toparcView"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="wrap_content"
@@ -78,10 +85,9 @@
                 android:id="@+id/lottiedownload"
                 app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionShowcase"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toStartOf="@+id/textViewDescriptionShowcase"
                 android:layout_marginStart="8dp"
-                app:layout_constraintHorizontal_bias="0.86"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:lottie_autoPlay="false"
                 app:lottie_fileName="834-download-icon.json"
                 app:lottie_loop="false" android:layout_marginBottom="32dp"
